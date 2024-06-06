@@ -7,8 +7,10 @@ const operators = ["%", "/", "*", "-", "+"];
 
 let lastOperator = "";
 
+//Load the audio
+const audio = new Audio("./assets/");
 const buttonAction = (value) => {
-    console.log(value);
+    displayElm.classList.remove("prank");
 
     if (value === "AC"){
         strToDisplay = "";
@@ -79,6 +81,10 @@ const display = (str) => {
 const displayTotal = () => {
 
     const extraValue = randomValue();
+    if (extraValue) {
+        displayElm.classList.add("prank");
+        audio.play();
+    }
     const total = eval(strToDisplay) + extraValue;
     strToDisplay = total.toString();
    display(total);
@@ -87,5 +93,5 @@ const displayTotal = () => {
 // add random value
 const randomValue = ()=> {
     const num = Math.round(Math.random() * 10);
-    return num < 3 ? num : 0;
+    return num < 5 ? num : 0;
 }

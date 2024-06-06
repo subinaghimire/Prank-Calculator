@@ -66,7 +66,12 @@ const buttonAction = (value) => {
 
 //attached click event to all the buttons
 allButtonsElm.forEach((btn) => {
+    btn.addEventListener("mousedown", () => {
+        btn.style.scale = ".9";
+    });
+
     btn.addEventListener("click", () => {
+        btn.style.scale = "1";
         const value = btn.innerText;
         buttonAction(value);
     });

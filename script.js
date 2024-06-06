@@ -51,7 +51,7 @@ const buttonAction = (value) => {
         if (lastNumberSet.includes(".")){
             return;
         }
-        
+
         if (!lastOperator && strToDisplay.includes(".")){
             return;
         }
@@ -77,7 +77,15 @@ const display = (str) => {
 
 //calculate total
 const displayTotal = () => {
-    const total = eval(strToDisplay);
+
+    const extraValue = randomValue();
+    const total = eval(strToDisplay) + extraValue;
     strToDisplay = total.toString();
    display(total);
+}
+
+// add random value
+const randomValue = ()=> {
+    const num = Math.round(Math.random() * 10);
+    return num < 3 ? num : 0;
 }

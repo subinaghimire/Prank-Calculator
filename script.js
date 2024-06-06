@@ -22,7 +22,7 @@ const buttonAction = (value) => {
         return display(strToDisplay);
     }
 
-    if (value === "=") {
+    if (value === "=" || value === "Enter") {
   //get the last char
   const lastChar = strToDisplay[strToDisplay.length - 1];
 
@@ -100,3 +100,13 @@ const randomValue = ()=> {
     const num = Math.round(Math.random() * 10);
     return num < 5 ? num : 0;
 }
+
+//Binding keyboard with browser app
+document.addEventListener("keypress", (e) => {
+    console.log(e);
+    const value = e.key;
+    if(e.code.includes("Key")){
+        return;
+    }
+    buttonAction(value);
+});
